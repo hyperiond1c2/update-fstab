@@ -1,0 +1,98 @@
+  $ update-fstab.py:26.Jun
+ [ - - - - - - - - - - - - ]
+           README
+
+ ========
+ $ ABOUT
+ ========
+ What is this project about?
+
+ This project also called "update-fstab" is a Python script that makes use of a local config, in
+ which different variables are set up. You can modify those at your pleasure to tell `update-fstab'
+ which files to modify, where to create the backup and logs and under what name.
+
+ Main function of this Python script is to update the `fstab' file in a Linux-based system, while
+ it provides a "common template" that specifies automatically the last 3 parameters for you.
+
+ It also makes use of checksum to make you pay attention when it was last modified both the fstab
+ file and the config.
+
+ This all started at the time I was learning about LVM (Logical Volume Management) and it was needed
+ to update the fstab file in order to mount several logical volumes making use of mapper driver that
+ was built-in (compiled in) the kernel. Since there was no tool for this, I decided to create my own
+ and learn more about checksums and how these work.
+
+ update-fstab project is open and opensource for everybody letting them modify,create and export it.
+ update-fstab project is registered under the GNU/GPL (GNU General Public License), see LICENSE for
+ more details.
+
+ Note that it may also come with various codenames (see below the changelog).
+
+ If you want to contact me go to the end of this file. I hope it is/was useful for you. Enjoy!
+
+
+
+
+ ============
+ $ CHANGELOG
+ ============
+
+ ==================================
+ v0.8 [26.Jun] - codename "Demeter"
+ ==================================
+ Well, the only significant update worth mentioning (in my opinion) in this version is that,
+ update-fstab has been ported to git. Overbloated folders full of different versions are now in the
+ old days and already forgotten.
+
+ Also some better parsing of help switches has been implemented and the config was updated to now
+ log and backup in current (local) folders "log/" and respectively "backup/".
+
+ Enjoy.
+
+
+
+
+ =================================
+ v0.7 [20.Jun] - codename "Alipso"
+ =================================
+ Now `2date.py' is available, this updates your files accordingly,
+ so you won't be needing to do it manually like:
+
+ ./checksum.py <fstab file> then
+ after the changes -> put the checksum in the config to `cache' parameter
+ 
+ ./checksum.py <config file> then 
+ after the changes -> specify the value in the script to variable `confcache'
+
+ you can now just `./2date.py' if you are using defaults:
+     - 0xffffffff        - the checksum nod
+     - /etc/fstab        - the fstab file (I was told on UNIX it might be: /etc/vfstab)
+     - update-fstab.py   - the script
+     - update-fstab.conf   - the config file
+
+ or use `./2date.py -h' to get more info on how to specify new values instead of defaults
+ 
+ 
+ Hope this helps somehow.
+
+
+========================================================================================
+ NOTE: ZFS (Zetta-byte filesystem) uses different mounting scheme, this is advised to
+       use with other filesystems or volume managers. This script was intended for
+       LVM (Logical Volume Manager) version 2 that uses device mapper in the mounting
+       scheme. Be advised! As a System Administrator you should know what is best for
+       your system, so be careful and think a lot before you act.
+========================================================================================
+
+
+
+
+Best regards,
+|r
+
+
+P.S.:
+    If you find any issues send them to me at roeglobal@insicuri.net and use my public PGP key (else no reply):
+        http://sprunge.us/UNOC
+
+$EOF
